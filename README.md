@@ -10,10 +10,23 @@ Hybrid Retrieval-Augmented Generation engine combining vector embeddings with kn
 ## Overview
 Vector-Graph-RAG merges semantic vector matching with graph relationship networks. This dual querying architecture offers high context recall for deep document QA, mapping key facts as nodes and vectors.
 
+
+## Architecture Workflow
+```mermaid
+graph TD
+    SearchQuery([Search Query]) --> API[FastAPI Gateway]
+    API --> VectorSearch[Qdrant Vector Indexing]
+    API --> GraphSearch[Neo4j Fact Pathways]
+    VectorSearch --> Aggregator[Context Aggregator & Reranker]
+    GraphSearch --> Aggregator
+    Aggregator --> LLM[LLM Synthesis Engine]
+    LLM --> Output[Structured Document QA Output]
+```
+
 ## Features
-- **Graph & Vector Querying** — Traverses Neo4j nodes and Qdrant embeddings in parallel.
-- **Web UI** — TypeScript React interface to search data and inspect relationships.
-- **Evaluation Module** — Integrated tests measuring answer context and accuracy.
+- **Graph & Vector Querying**  Traverses Neo4j nodes and Qdrant embeddings in parallel.
+- **Web UI**  TypeScript React interface to search data and inspect relationships.
+- **Evaluation Module**  Integrated tests measuring answer context and accuracy.
 
 ## Tech Stack
 | Layer | Technology |
@@ -23,4 +36,4 @@ Vector-Graph-RAG merges semantic vector matching with graph relationship network
 | AI Client | OpenAI API |
 
 ## Author
-**Shubham Raut** — [GitHub](https://github.com/Shubham-raut-860) · [LinkedIn](https://linkedin.com/in/shubham-raut-aaa789365)
+**Shubham Raut**  [GitHub](https://github.com/Shubham-raut-860)  [LinkedIn](https://linkedin.com/in/shubham-raut-aaa789365)
